@@ -12,13 +12,13 @@ import javax.persistence.Id;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class NormalUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long Userid;
     String name;
     String surname;
-    String dateOfBirth;
+    String date_of_birth;
     String hometown;
 }
