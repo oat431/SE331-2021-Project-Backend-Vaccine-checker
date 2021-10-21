@@ -44,6 +44,14 @@ public class User {
     @NotNull
     private String lastname;
 
+    @Column(name = "date_of_birth")
+    @NotNull
+    private Date date_of_birth;
+
+    @Column(name = "hometown", length = 100)
+    @NotNull
+    private String hometown;
+
     @Column(name = "EMAIL", length = 50)
     @NotNull
     private String email;
