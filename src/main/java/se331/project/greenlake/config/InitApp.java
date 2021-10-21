@@ -7,15 +7,15 @@ import org.springframework.stereotype.Component;
 import se331.project.greenlake.entity.Vaccine;
 import se331.project.greenlake.repository.DoctorRepository;
 import se331.project.greenlake.repository.PatientRepository;
-import se331.project.greenlake.repository.NormalUserRepository;
 import se331.project.greenlake.repository.VaccineRepository;
+import se331.project.greenlake.security.repository.UserRepository;
 
 import javax.transaction.Transactional;
 
 @Component
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Autowired
-    NormalUserRepository userRepository;
+    UserRepository userRepository;
 
     @Autowired
     DoctorRepository doctorRepository;

@@ -1,7 +1,7 @@
 package se331.project.greenlake.entity;
 import lombok.*;
+import se331.project.greenlake.security.entity.User;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Patient extends NormalUser {
+public class Patient extends User {
     Integer vaccinated_status;
 
     // todo doctor mapping : many to one
@@ -23,8 +23,5 @@ public class Patient extends NormalUser {
 
     @OneToMany(mappedBy = "comment_to")
     List<Comment> doctor_suggestion;
-
-    @ManyToMany
-    List<Comment> comment_from_doctor;
 
 }
