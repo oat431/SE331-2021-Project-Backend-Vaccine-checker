@@ -12,15 +12,21 @@ public class JwtAuthenticationRequest implements Serializable {
     private String username;
     private String password;
     private String email;
+    private String firstname;
+    private String lastname;
+    private String hometown;
 
     public JwtAuthenticationRequest() {
         super();
     }
 
-    public JwtAuthenticationRequest(String username, String password, String email) {
+    public JwtAuthenticationRequest(String username, String password, String email,String firstName,String lastname,String hometown) {
         this.setUsername(username);
         this.setPassword(password);
         this.setEmail(email);
+        this.setFirstname(firstName);
+        this.setLastname(lastname);
+        this.setHometown(hometown);
     }
 
     public String getUsername() {
@@ -45,5 +51,29 @@ public class JwtAuthenticationRequest implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getHometown() {
+        return hometown;
+    }
+
+    public void setHometown(String hometown) {
+        this.hometown = hometown;
     }
 }

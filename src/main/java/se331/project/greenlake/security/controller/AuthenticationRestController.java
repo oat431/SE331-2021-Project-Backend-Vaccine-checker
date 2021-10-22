@@ -83,7 +83,7 @@ public class AuthenticationRestController {
 
         if (jwtTokenUtil.canTokenBeRefreshed(token, user.getLastPasswordResetDate())) {
             String refreshedToken = jwtTokenUtil.refreshToken(token);
-            return ResponseEntity.ok(new JwtAuthenticationResponse(refreshedToken));
+            return ResponseEntity.ok(new JwtAuthenticationResponse(refreshedToken) + "You are now currently logout");
         } else {
             return ResponseEntity.badRequest().body(null);
         }
@@ -94,8 +94,9 @@ public class AuthenticationRestController {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         if (userRepository.findByUsername(authenticationRequest.getUsername()) == null ){
             userRepository.save(User.builder()
-                    .firstname(authenticationRequest.getUsername())
-                    .lastname(authenticationRequest.getUsername())
+                    .firstname(authenticationRequest.getFirstname())
+                    .lastname(authenticationRequest.getLastname())
+                    .hometown(authenticationRequest.getHometown())
                     .username(authenticationRequest.getUsername())
                     .password(encoder.encode(authenticationRequest.getPassword()))
                     .enabled(true)
