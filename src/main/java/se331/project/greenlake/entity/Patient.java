@@ -12,7 +12,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Patient extends User {
     Integer vaccinated_status;
-
     // todo doctor mapping : many to one
     @ManyToOne
     Doctor take_care_by;
