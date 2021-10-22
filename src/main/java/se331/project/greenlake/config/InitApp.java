@@ -15,13 +15,18 @@ import se331.project.greenlake.security.repository.AuthorityRepository;
 import se331.project.greenlake.security.repository.UserRepository;
 
 import javax.transaction.Transactional;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Component
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
     @Autowired
     UserRepository userRepository;
 
@@ -100,7 +105,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 VaccinatedList.builder()
                         .injected_vaccine(az)
                         .vaccinated_patient(mockPatient[0])
-                        .vaccinated_when(new Date(2021,7,12))
+                        .vaccinated_when(new GregorianCalendar(2021, 7, 12).getTime())
                         .build()
         );
 
@@ -108,7 +113,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 VaccinatedList.builder()
                         .injected_vaccine(az)
                         .vaccinated_patient(mockPatient[0])
-                        .vaccinated_when(new Date(2021,10,4))
+                        .vaccinated_when(new GregorianCalendar(2021, 10, 4).getTime())
                         .build()
         );
 
@@ -116,7 +121,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 VaccinatedList.builder()
                         .injected_vaccine(pz)
                         .vaccinated_patient(mockPatient[1])
-                        .vaccinated_when(new Date(2021,4,29))
+                        .vaccinated_when(new GregorianCalendar(2021, 4, 29).getTime())
                         .build()
         );
 
@@ -124,7 +129,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 VaccinatedList.builder()
                         .injected_vaccine(pz)
                         .vaccinated_patient(mockPatient[1])
-                        .vaccinated_when(new Date(2021,5,16))
+                        .vaccinated_when(new GregorianCalendar(2021, 5, 16).getTime())
                         .build()
         );
 
@@ -132,7 +137,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 VaccinatedList.builder()
                         .injected_vaccine(nv)
                         .vaccinated_patient(mockPatient[2])
-                        .vaccinated_when(new Date(2021,7,15))
+                        .vaccinated_when(new GregorianCalendar(2021, 7, 15).getTime())
                         .build()
         );
 
@@ -140,7 +145,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 VaccinatedList.builder()
                         .injected_vaccine(nv)
                         .vaccinated_patient(mockPatient[2])
-                        .vaccinated_when(new Date(2021,8,05))
+                        .vaccinated_when(new GregorianCalendar(2021, 8, 5).getTime())
                         .build()
         );
 
@@ -148,7 +153,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 VaccinatedList.builder()
                         .injected_vaccine(az)
                         .vaccinated_patient(mockPatient[3])
-                        .vaccinated_when(new Date(2021,4,28))
+                        .vaccinated_when(new GregorianCalendar(2021, 4, 28).getTime())
                         .build()
         );
 
@@ -156,7 +161,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 VaccinatedList.builder()
                         .injected_vaccine(sv)
                         .vaccinated_patient(mockPatient[4])
-                        .vaccinated_when(new Date(2021,2,17))
+                        .vaccinated_when(new GregorianCalendar(2021, 2, 17).getTime())
                         .build()
         );
 
@@ -164,7 +169,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 VaccinatedList.builder()
                         .injected_vaccine(sv)
                         .vaccinated_patient(mockPatient[4])
-                        .vaccinated_when(new Date(2021,3,6))
+                        .vaccinated_when(new GregorianCalendar(2021, 3, 6).getTime())
                         .build()
         );
 
@@ -172,7 +177,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 VaccinatedList.builder()
                         .injected_vaccine(sv)
                         .vaccinated_patient(mockPatient[4])
-                        .vaccinated_when(new Date(2021,5,1))
+                        .vaccinated_when(new GregorianCalendar(2021, 5, 1).getTime())
                         .build()
         );
     }
@@ -183,7 +188,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .comment_by(mockDoctor[0])
                         .comment_to(mockPatient[0])
                         .content("Hey you look good na")
-                        .comment_when(new Date(2021,10,20))
+                        .comment_when(new GregorianCalendar(2021, 10, 12).getTime())
                         .build()
         );
 
@@ -192,7 +197,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .comment_by(mockDoctor[2])
                         .comment_to(mockPatient[2])
                         .content("You need to drink a lot of water")
-                        .comment_when(new Date(2021,10,20))
+                        .comment_when(new GregorianCalendar(2021, 10, 12).getTime())
                         .build()
         );
 
@@ -201,7 +206,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .comment_by(mockDoctor[1])
                         .comment_to(mockPatient[3])
                         .content("Stop eating a fried thing ok.")
-                        .comment_when(new Date(2021,10,10))
+                        .comment_when(new GregorianCalendar(2021, 10, 1).getTime())
                         .build()
         );
 
@@ -210,7 +215,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         .comment_by(mockDoctor[2])
                         .comment_to(mockPatient[4])
                         .content("Ha ha you are going to die on this government I cannot help you wa")
-                        .comment_when(new Date(2021,10,10))
+                        .comment_when(new GregorianCalendar(2021, 10, 1).getTime())
                         .build()
         );
     }
@@ -234,7 +239,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .enabled(false)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .hometown("Someland, on land")
-                .date_of_birth(new Date(2000,1,1)).build();
+                .date_of_birth(new GregorianCalendar(2000, 10, 7).getTime()).build();
 
         theAdmin = User.builder()
                 .username("pot561")
@@ -246,7 +251,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .hometown("Kamphanegphet, Thailand")
-                .date_of_birth(new Date(2000,10,27))
+                .date_of_birth(new GregorianCalendar(2000, 10, 7).getTime())
                 .build();
 
         addMockDoctor();
@@ -287,7 +292,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[0].setLastname("Tippimwong");
         mockPatient[0].setEnabled(true);
         mockPatient[0].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        mockPatient[0].setDate_of_birth(new Date(2000,11,9));
+        mockPatient[0].setDate_of_birth(new GregorianCalendar(2000, 11, 9).getTime());
         mockPatient[0].setHometown("Kamphanegphet, Thailand");
         mockPatient[0].setVaccinated_status(2);
         mockPatient[0].setTake_care_by(mockDoctor[0]);
@@ -300,7 +305,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[1].setLastname("Oneal");
         mockPatient[1].setEnabled(true);
         mockPatient[1].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        mockPatient[1].setDate_of_birth(new Date(1987,05,10));
+        mockPatient[1].setDate_of_birth(new GregorianCalendar(1998, 12, 1).getTime());
         mockPatient[1].setHometown("Earth, Solar System");
         mockPatient[1].setVaccinated_status(2);
         mockPatient[1].setTake_care_by(mockDoctor[1]);
@@ -313,7 +318,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[2].setLastname("Sexton");
         mockPatient[2].setEnabled(true);
         mockPatient[2].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        mockPatient[2].setDate_of_birth(new Date(2004,12,25));
+        mockPatient[2].setDate_of_birth(new GregorianCalendar(2004, 12, 25).getTime());
         mockPatient[2].setHometown("Modesto, US");
         mockPatient[2].setVaccinated_status(2);
         mockPatient[2].setTake_care_by(mockDoctor[2]);
@@ -326,7 +331,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[3].setLastname("Charles");
         mockPatient[3].setEnabled(true);
         mockPatient[3].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        mockPatient[3].setDate_of_birth(new Date(2001,8,8));
+        mockPatient[3].setDate_of_birth(new GregorianCalendar(2000, 8, 8).getTime());
         mockPatient[3].setHometown("Bankok, Thailand");
         mockPatient[3].setVaccinated_status(1);
         mockPatient[3].setTake_care_by(mockDoctor[1]);
@@ -338,7 +343,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[4].setLastname("Leon");
         mockPatient[4].setEnabled(true);
         mockPatient[4].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        mockPatient[4].setDate_of_birth(new Date(1983,12,5));
+        mockPatient[4].setDate_of_birth(new GregorianCalendar(1983, 12, 5).getTime());
         mockPatient[4].setHometown("Beijing, China");
         mockPatient[4].setVaccinated_status(3);
         mockPatient[4].setTake_care_by(mockDoctor[2]);
@@ -358,7 +363,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockDoctor[0].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
         mockDoctor[0].setHospital("Something, Hopistal");
         mockDoctor[0].setHometown("eiei");
-        mockDoctor[0].setDate_of_birth(new Date(2000,1,1));
+        mockDoctor[0].setDate_of_birth(new GregorianCalendar(1998, 12, 1).getTime());
 
         mockDoctor[1].setUsername("Kim");
         mockDoctor[1].setPassword(encoder.encode("kim777"));
@@ -370,7 +375,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockDoctor[1].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
         mockDoctor[1].setHospital("Something, Hospital");
         mockDoctor[1].setHometown("Stakhome, Sweden");
-        mockDoctor[1].setDate_of_birth(new Date(2000,1,1));
+        mockDoctor[1].setDate_of_birth(new GregorianCalendar(1998, 12, 1).getTime());
 
         mockDoctor[2].setUsername("Su");
         mockDoctor[2].setPassword(encoder.encode("susu888"));
@@ -382,6 +387,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockDoctor[2].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
         mockDoctor[2].setHospital("Something, Hospital");
         mockDoctor[2].setHometown("Dubai, UAE");
-        mockDoctor[2].setDate_of_birth(new Date(2000,1,1));
+        mockDoctor[2].setDate_of_birth(new GregorianCalendar(1998, 12, 1).getTime());
     }
 }
