@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface PatientRepository extends JpaRepository<Patient,Long> {
     List<Patient> findAll();
-//    Page<Patient> findByVaccinated_status(Integer dose,Pageable pageable);
+    Page<Patient> findByTakeCare(Doctor doctor,Pageable pageable);
 //    Page<Patient> findByTake_care_by(Doctor doctor, Pageable pageable);
 }

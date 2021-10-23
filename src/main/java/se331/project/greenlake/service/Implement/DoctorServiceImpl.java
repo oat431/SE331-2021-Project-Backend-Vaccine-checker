@@ -24,6 +24,11 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
+    public Page<Patient> getPatientInCares(Doctor doctor,Integer pageSize, Integer page) {
+        return doctorDao.getPatientInCares(doctor,pageSize,page);
+    }
+
+    @Override
     public Doctor getDoctor(Long id) {
         return doctorDao.getDoctor(id);
     }

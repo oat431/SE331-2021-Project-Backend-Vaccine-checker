@@ -309,7 +309,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[0].setDate_of_birth(new GregorianCalendar(2000, 11, 9).getTime());
         mockPatient[0].setHometown("Kamphanegphet, Thailand");
         mockPatient[0].setVaccinated_status(2);
-        mockPatient[0].setTake_care_by(mockDoctor[0]);
+        mockPatient[0].setTakeCare(mockDoctor[0]);
 
         mockPatient[1].setUsername("est123");
         mockPatient[1].setPassword(encoder.encode("Est4466"));
@@ -323,7 +323,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[1].setDate_of_birth(new GregorianCalendar(1998, 12, 1).getTime());
         mockPatient[1].setHometown("Earth, Solar System");
         mockPatient[1].setVaccinated_status(2);
-        mockPatient[1].setTake_care_by(mockDoctor[1]);
+        mockPatient[1].setTakeCare(mockDoctor[1]);
 
         mockPatient[2].setUsername("emma431");
         mockPatient[2].setPassword(encoder.encode("Emma555"));
@@ -337,7 +337,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[2].setDate_of_birth(new GregorianCalendar(2004, 12, 25).getTime());
         mockPatient[2].setHometown("Modesto, US");
         mockPatient[2].setVaccinated_status(2);
-        mockPatient[2].setTake_care_by(mockDoctor[2]);
+        mockPatient[2].setTakeCare(mockDoctor[2]);
 
         mockPatient[3].setUsername("josep111");
         mockPatient[3].setPassword(encoder.encode("JoJo563"));
@@ -351,7 +351,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[3].setDate_of_birth(new GregorianCalendar(2000, 8, 8).getTime());
         mockPatient[3].setHometown("Bankok, Thailand");
         mockPatient[3].setVaccinated_status(1);
-        mockPatient[3].setTake_care_by(mockDoctor[1]);
+        mockPatient[3].setTakeCare(mockDoctor[1]);
 
         mockPatient[4].setUsername("clay903");
         mockPatient[4].setPassword(encoder.encode("itmeclay333"));
@@ -364,7 +364,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[4].setDate_of_birth(new GregorianCalendar(1983, 12, 5).getTime());
         mockPatient[4].setHometown("Beijing, China");
         mockPatient[4].setVaccinated_status(3);
-        mockPatient[4].setTake_care_by(mockDoctor[2]);
+        mockPatient[4].setTakeCare(mockDoctor[2]);
     }
 
     private void addMockDoctor(){

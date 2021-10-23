@@ -4,17 +4,21 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import se331.project.greenlake.entity.Patient;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class DoctorDto {
+public class PatientInCareDto {
+    Long id;
+    String sex;
     String firstname;
     String lastname;
-    String hospital;
-    List<PatientInCareDto> patients_in_care;
+    Date date_of_birth;
+    String hometown;
+    Integer vaccinated_status;
+    List<VaccinatedListDto> vaccinated_list;
 }

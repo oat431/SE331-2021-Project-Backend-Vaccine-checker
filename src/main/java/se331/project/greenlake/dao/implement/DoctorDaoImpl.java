@@ -39,6 +39,11 @@ public class DoctorDaoImpl implements DoctorDao {
     }
 
     @Override
+    public Page<Patient> getPatientInCares(Doctor doctor,Integer pageSize, Integer page) {
+        return patientRepository.findByTakeCare(doctor,PageRequest.of(pageSize,page));
+    }
+
+    @Override
     public Doctor getDoctor(Long id) {
         return doctorRepository.findById(id).orElse(null);
     }

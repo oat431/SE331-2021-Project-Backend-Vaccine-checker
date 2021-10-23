@@ -76,7 +76,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/update-vaccine",
                         "/update-doctor"
                 ).hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST,
+                .antMatchers(
+                        HttpMethod.GET,
+                        "/get-patients"
+                ).hasRole("DOCTOR")
+                .antMatchers(
+                        HttpMethod.POST,
                         "/comment"
                 ).hasRole("DOCTOR")
                 .anyRequest().authenticated();

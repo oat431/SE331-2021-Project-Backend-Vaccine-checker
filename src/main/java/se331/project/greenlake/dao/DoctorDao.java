@@ -7,6 +7,7 @@ import se331.project.greenlake.entity.Patient;
 public interface DoctorDao {
     Integer getDoctorSize();
     Page<Doctor> getDoctors(Integer pageSize,Integer page);
+    Page<Patient> getPatientInCares(Doctor doctor,Integer pageSize,Integer page);
     Doctor getDoctor(Long id);
     Doctor save(Doctor doctor);
     Patient giveComment(String content, Doctor comment_by, Patient comment_to);

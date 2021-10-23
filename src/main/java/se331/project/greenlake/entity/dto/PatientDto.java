@@ -23,7 +23,7 @@ public class PatientDto {
     Date date_of_birth;
     String hometown;
     Integer vaccinated_status;
-    DoctorDto take_care_by;
+    DoctorDto takeCare;
     List<CommentDto> doctor_suggestion;
     List<VaccinatedListDto> vaccinated_list;
 }
