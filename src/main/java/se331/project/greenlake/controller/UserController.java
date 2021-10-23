@@ -7,8 +7,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+import se331.project.greenlake.entity.Doctor;
 import se331.project.greenlake.entity.Patient;
 import se331.project.greenlake.security.entity.User;
 import se331.project.greenlake.service.PatientService;
@@ -71,14 +72,39 @@ public class UserController {
         page = page == null ? 1 : page;
         Page<Patient> pageOutput;
         pageOutput = patientService.getPatients(perPage,page);
-//        if(dose != null){
-//            pageOutput = patientService.getPatientVaccineStatus(dose,PageRequest.of(page-1,perPage));
-//        }else{
-//            pageOutput = patientService.getPatients(perPage,page);
-//        }
 
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         return new ResponseEntity<>(LabMapper.INSTANCE.getPatientDto(pageOutput.getContent()), responseHeader, HttpStatus.OK);
+    }
+
+    @GetMapping("patients/{id}")
+    public ResponseEntity<?> getPatient(
+           @PathVariable("id") Long id
+    ){
+        Patient output = patientService.getPatient(id);
+        if(output != null){
+            return ResponseEntity.ok(LabMapper.INSTANCE.getPatientDto(output));
+        }else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
+        }
+    }
+
+    @PostMapping("verify-user/{id}/patient")
+    public ResponseEntity<?> VerifyUserAsPatient(
+           @PathVariable("id") Long id
+    ){
+        User user = userService.getUser(id);
+        Patient output = userService.getVerifyAsPatient(user) ;
+        return ResponseEntity.ok(LabMapper.INSTANCE.getPatientDto(output));
+    }
+
+    @PostMapping("verify-user/{id}/doctor")
+    public ResponseEntity<?> VerifyUserAsDoctor(
+            @PathVariable("id") Long id
+    ){
+        User user = userService.getUser(id);
+        Doctor output = userService.getVerifyAsDoctor(user) ;
+        return ResponseEntity.ok(LabMapper.INSTANCE.getDoctorDto(output));
     }
 }

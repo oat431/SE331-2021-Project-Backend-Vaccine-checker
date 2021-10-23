@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se331.project.greenlake.dao.UserDao;
+import se331.project.greenlake.entity.Doctor;
+import se331.project.greenlake.entity.Patient;
 import se331.project.greenlake.security.entity.Authority;
 import se331.project.greenlake.security.entity.User;
 import se331.project.greenlake.service.UserService;
@@ -45,5 +47,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<User> getUnVerifyUsers(Pageable pageable) {
         return userDao.getUnVerifyUsers(pageable);
+    }
+
+    @Override
+    public Doctor getVerifyAsDoctor(User user) {
+        return userDao.getVerifyAsDoctor(user);
+    }
+
+    @Override
+    public Patient getVerifyAsPatient(User user) {
+        return userDao.getVerifyAsPatient(user);
     }
 }

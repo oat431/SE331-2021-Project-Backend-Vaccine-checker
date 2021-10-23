@@ -2,6 +2,8 @@ package se331.project.greenlake.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import se331.project.greenlake.entity.Doctor;
+import se331.project.greenlake.entity.Patient;
 import se331.project.greenlake.security.entity.Authority;
 import se331.project.greenlake.security.entity.User;
 
@@ -15,4 +17,6 @@ public interface UserService {
     User save(User user);
     Page<User> getUsers(String username, Pageable pageable);
     Page<User> getUnVerifyUsers(Pageable pageable);
+    Doctor getVerifyAsDoctor(User user);
+    Patient getVerifyAsPatient(User user);
 }

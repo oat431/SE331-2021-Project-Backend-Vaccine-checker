@@ -99,6 +99,7 @@ public class AuthenticationRestController {
                     .username(authenticationRequest.getUsername())
                     .password(encoder.encode(authenticationRequest.getPassword()))
                     .enabled(true)
+                    .verify(false)
                     .lastPasswordResetDate(new Date(System.currentTimeMillis()))
                     .email(authenticationRequest.getEmail())
                     .build());
