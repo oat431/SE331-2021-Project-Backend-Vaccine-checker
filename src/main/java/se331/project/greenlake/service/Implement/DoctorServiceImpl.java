@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import se331.project.greenlake.dao.DoctorDao;
 import se331.project.greenlake.entity.Doctor;
+import se331.project.greenlake.entity.Patient;
 import se331.project.greenlake.service.DoctorService;
 
 @Service
@@ -31,4 +32,11 @@ public class DoctorServiceImpl implements DoctorService {
     public Doctor save(Doctor doctor) {
         return doctorDao.save(doctor);
     }
+
+    @Override
+    public Patient giveComment(String content, Doctor comment_by, Patient comment_to) {
+        return doctorDao.giveComment(content,comment_by,comment_to);
+    }
+
+
 }

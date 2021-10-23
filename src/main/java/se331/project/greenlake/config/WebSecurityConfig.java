@@ -68,14 +68,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/all-users",
                         "/un-verify-users",
                         "/patients/**",
-                        "/doctors/**",
+                        "/doctors/**"
+                        ).hasRole("ADMIN")
+                .antMatchers(
+                        HttpMethod.POST,
                         "/verify-user/**",
                         "/update-vaccine",
                         "/update-doctor"
-                        ).hasRole("ADMIN")
-//                .antMatchers(HttpMethod.GET,"/organizers").permitAll()
-//                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-//                .antMatchers(HttpMethod.POST,"/events").hasRole("ADMIN")
+                ).hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,
+                        "/comment"
+                ).hasRole("DOCTOR")
                 .anyRequest().authenticated();
 
         // Custom JWT based security filter
