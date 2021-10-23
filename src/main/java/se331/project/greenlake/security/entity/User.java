@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -25,40 +26,55 @@ public class User {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    protected Long id;
 
     @Column(name = "USERNAME", length = 50, unique = true)
     @NotNull
-    private String username;
+    protected String username;
 
     @Column(name = "PASSWORD", length = 100)
     @NotNull
-    private String password;
+    protected String password;
+
+    @Column(name="SEX",length = 10)
+    @NotNull
+    protected String sex;
 
     @Column(name = "FIRSTNAME", length = 50)
     @NotNull
-    private String firstname;
+    protected String firstname;
 
     @Column(name = "LASTNAME", length = 50)
     @NotNull
-    private String lastname;
+    protected String lastname;
+
+    @Column(name = "date_of_birth")
+    @NotNull
+    protected Date date_of_birth;
+
+    @Column(name = "hometown", length = 100)
+    @NotNull
+    protected String hometown;
 
     @Column(name = "EMAIL", length = 50)
     @NotNull
-    private String email;
+    protected String email;
 
     @Column(name = "ENABLED")
     @NotNull
-    private Boolean enabled;
+    protected Boolean enabled;
 
     @Column(name = "LASTPASSWORDRESETDATE")
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
-    private Date lastPasswordResetDate;
+    protected Date lastPasswordResetDate;
+
+    @Column(name = "verify")
+    @NotNull
+    protected Boolean verify;
 
 	@Builder.Default
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Authority> authorities = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    protected List<Authority> authorities = new ArrayList<>();
 
 }
