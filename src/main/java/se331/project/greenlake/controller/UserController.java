@@ -9,9 +9,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import se331.project.greenlake.security.entity.Authority;
+import se331.project.greenlake.security.entity.AuthorityName;
 import se331.project.greenlake.security.entity.User;
 import se331.project.greenlake.service.UserService;
 import se331.project.greenlake.util.LabMapper;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -35,6 +41,19 @@ public class UserController {
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         return new ResponseEntity<>(LabMapper.INSTANCE.getUserDto(pageOutput.getContent()), responseHeader, HttpStatus.OK);
+    }
 
+    @GetMapping("un-verify-users")
+    public ResponseEntity<?> getUnVerifyUser(
+            @RequestParam(value = "_limit", required = false) Integer perPage,
+            @RequestParam(value = "_page", required = false) Integer page
+    ){
+        perPage = perPage == null ? 3 : perPage;
+        page = page == null ? 1 : page;
+        Page<User> pageOutput;
+        pageOutput = userService.getUnVerifyUsers(PageRequest.of(page-1,perPage));
+        HttpHeaders responseHeader = new HttpHeaders();
+        responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
+        return new ResponseEntity<>(LabMapper.INSTANCE.getUserDto(pageOutput.getContent()), responseHeader, HttpStatus.OK);
     }
 }

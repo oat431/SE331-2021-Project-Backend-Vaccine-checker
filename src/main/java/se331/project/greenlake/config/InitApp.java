@@ -220,7 +220,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         );
     }
 
-    User mockNormalUser,theAdmin;
+    User mockNormalUser, mockNormalUser2,theAdmin;
     Patient[] mockPatient = new Patient[10];
     Doctor[] mockDoctor = new Doctor[3];
     PasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -237,8 +237,22 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .firstname("Something")
                 .lastname("ThingSome")
                 .enabled(false)
+                .verify(false)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .hometown("Someland, on land")
+                .date_of_birth(new GregorianCalendar(2000, 10, 7).getTime()).build();
+
+        mockNormalUser2 = User.builder()
+                .username("normalUser2")
+                .password(encoder.encode("normalUser2"))
+                .email("normalUser2@normalUser2.com")
+                .sex("female")
+                .firstname("Something")
+                .lastname("ThingSome")
+                .enabled(true)
+                .verify(false)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .hometown("On land, Something")
                 .date_of_birth(new GregorianCalendar(2000, 10, 7).getTime()).build();
 
         theAdmin = User.builder()
@@ -249,6 +263,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .firstname("Flowero")
                 .lastname("Panomete")
                 .enabled(true)
+                .verify(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .hometown("Kamphanegphet, Thailand")
                 .date_of_birth(new GregorianCalendar(2000, 10, 7).getTime())
@@ -263,9 +278,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         authorityRepository.save(doctor);
 
         mockNormalUser.getAuthorities().add(normalUser);
+        mockNormalUser2.getAuthorities().add(normalUser);
         theAdmin.getAuthorities().add(admin);
 
         userRepository.save(mockNormalUser);
+        userRepository.save(mockNormalUser2);
         userRepository.save(theAdmin);
 
         for(int i=0;i<mockPatient.length;i++){
@@ -291,6 +308,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[0].setFirstname("Sahachan");
         mockPatient[0].setLastname("Tippimwong");
         mockPatient[0].setEnabled(true);
+        mockPatient[0].setVerify(true);
         mockPatient[0].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
         mockPatient[0].setDate_of_birth(new GregorianCalendar(2000, 11, 9).getTime());
         mockPatient[0].setHometown("Kamphanegphet, Thailand");
@@ -304,6 +322,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[1].setFirstname("Essie");
         mockPatient[1].setLastname("Oneal");
         mockPatient[1].setEnabled(true);
+        mockPatient[1].setVerify(true);
         mockPatient[1].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
         mockPatient[1].setDate_of_birth(new GregorianCalendar(1998, 12, 1).getTime());
         mockPatient[1].setHometown("Earth, Solar System");
@@ -317,6 +336,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[2].setFirstname("Emma");
         mockPatient[2].setLastname("Sexton");
         mockPatient[2].setEnabled(true);
+        mockPatient[2].setVerify(true);
         mockPatient[2].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
         mockPatient[2].setDate_of_birth(new GregorianCalendar(2004, 12, 25).getTime());
         mockPatient[2].setHometown("Modesto, US");
@@ -330,6 +350,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[3].setFirstname("Josephine");
         mockPatient[3].setLastname("Charles");
         mockPatient[3].setEnabled(true);
+        mockPatient[3].setVerify(true);
         mockPatient[3].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
         mockPatient[3].setDate_of_birth(new GregorianCalendar(2000, 8, 8).getTime());
         mockPatient[3].setHometown("Bankok, Thailand");
@@ -342,6 +363,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[4].setFirstname("Clay");
         mockPatient[4].setLastname("Leon");
         mockPatient[4].setEnabled(true);
+        mockPatient[4].setVerify(true);
         mockPatient[4].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
         mockPatient[4].setDate_of_birth(new GregorianCalendar(1983, 12, 5).getTime());
         mockPatient[4].setHometown("Beijing, China");
@@ -360,6 +382,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockDoctor[0].setFirstname("Doctor");
         mockDoctor[0].setLastname("Rotcod");
         mockDoctor[0].setEnabled(true);
+        mockDoctor[0].setVerify(true);
         mockDoctor[0].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
         mockDoctor[0].setHospital("Something, Hopistal");
         mockDoctor[0].setHometown("eiei");
@@ -372,6 +395,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockDoctor[1].setFirstname("Kim");
         mockDoctor[1].setLastname("Rotcod");
         mockDoctor[1].setEnabled(true);
+        mockDoctor[1].setVerify(true);
         mockDoctor[1].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
         mockDoctor[1].setHospital("Something, Hospital");
         mockDoctor[1].setHometown("Stakhome, Sweden");
@@ -384,6 +408,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockDoctor[2].setFirstname("Su Chan");
         mockDoctor[2].setLastname("Rotcod");
         mockDoctor[2].setEnabled(true);
+        mockDoctor[2].setVerify(true);
         mockDoctor[2].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
         mockDoctor[2].setHospital("Something, Hospital");
         mockDoctor[2].setHometown("Dubai, UAE");

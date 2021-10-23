@@ -68,6 +68,10 @@ public class User {
     @NotNull
     protected Date lastPasswordResetDate;
 
+    @Column(name = "verify")
+    @NotNull
+    protected Boolean verify;
+
 	@Builder.Default
     @ManyToMany(fetch = FetchType.EAGER)
     protected List<Authority> authorities = new ArrayList<>();

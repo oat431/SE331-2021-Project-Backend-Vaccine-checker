@@ -5,8 +5,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se331.project.greenlake.dao.UserDao;
+import se331.project.greenlake.security.entity.Authority;
 import se331.project.greenlake.security.entity.User;
 import se331.project.greenlake.service.UserService;
+
+import java.util.Collection;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -36,5 +40,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<User> getUsers(String username, Pageable pageable) {
         return userDao.getUsers(username,pageable);
+    }
+
+    @Override
+    public Page<User> getUnVerifyUsers(Pageable pageable) {
+        return userDao.getUnVerifyUsers(pageable);
     }
 }

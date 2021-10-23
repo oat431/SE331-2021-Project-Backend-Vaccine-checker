@@ -6,8 +6,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import se331.project.greenlake.dao.UserDao;
+import se331.project.greenlake.security.entity.Authority;
 import se331.project.greenlake.security.entity.User;
 import se331.project.greenlake.security.repository.UserRepository;
+
+import java.util.Collection;
+import java.util.List;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -38,5 +42,10 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Page<User> getUsers(String username, Pageable pageable) {
         return userRepository.findByUsernameIgnoreCaseContainingOrFirstnameIgnoreCaseContaining(username,username,pageable);
+    }
+
+    @Override
+    public Page<User> getUnVerifyUsers(Pageable pageable) {
+        return userRepository.findByVerifyIsFalse(pageable);
     }
 }
