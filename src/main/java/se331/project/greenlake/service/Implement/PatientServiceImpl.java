@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import se331.project.greenlake.dao.DoctorDao;
 import se331.project.greenlake.dao.PatientDao;
 import se331.project.greenlake.entity.Doctor;
 import se331.project.greenlake.entity.Patient;
@@ -13,6 +14,9 @@ import se331.project.greenlake.service.PatientService;
 public class PatientServiceImpl implements PatientService {
     @Autowired
     PatientDao patientDao;
+
+    @Autowired
+    DoctorDao doctorDao;
 
     @Override
     public Integer getPatientSize() {
@@ -32,6 +36,15 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Patient save(Patient patient) {
         return patientDao.save(patient);
+    }
+
+    @Override
+    public Patient getDoctorService(Long doctor_id, Long patient_id) {
+        Patient patient = patientDao.getPatient(patient_id);
+        Doctor doctor = doctorDao.getDoctor(doctor_id);
+        System.out.println(patient.toString());
+        System.out.println(doctor.toString());
+        return patientDao.getDoctorService(doctor,patient);
     }
 
 //    @Override

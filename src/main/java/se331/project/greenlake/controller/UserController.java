@@ -9,17 +9,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import se331.project.greenlake.entity.Doctor;
-import se331.project.greenlake.entity.Patient;
-import se331.project.greenlake.entity.TempVaccinatedList;
-import se331.project.greenlake.entity.VaccinatedList;
+import se331.project.greenlake.entity.*;
 import se331.project.greenlake.security.entity.User;
+import se331.project.greenlake.service.DoctorService;
 import se331.project.greenlake.service.PatientService;
 import se331.project.greenlake.service.UserService;
 import se331.project.greenlake.service.VaccineService;
 import se331.project.greenlake.util.LabMapper;
+import se331.project.greenlake.util.form.TempPatientDoctor;
+import se331.project.greenlake.util.form.TempVaccinatedList;
 
-import java.util.*;
+import javax.print.Doc;
 
 @Controller
 public class UserController {
@@ -31,6 +31,9 @@ public class UserController {
 
     @Autowired
     VaccineService vaccineService;
+
+    @Autowired
+    DoctorService doctorService;
 
     @GetMapping("all-users")
     public ResponseEntity<?> getAllUsers(
@@ -117,5 +120,11 @@ public class UserController {
         Patient output = vaccineService.addUpdateVaccineToPatient(tempVaccinatedList.getVaccinated_when(), tempVaccinatedList.getPatient_id(), tempVaccinatedList.getVaccine_id());
         return ResponseEntity.ok(LabMapper.INSTANCE.getPatientDto(output));
     }
-    // todo mapping doctor to user
+
+    @PostMapping("update-doctor")
+    public ResponseEntity<?> UpdateDoctor(@RequestBody TempPatientDoctor tempPatientDoctor){
+//        Doctor doctor = doctorService.getDoctor(tempPatientDoctor.getDoctor_id());
+        Patient output = patientService.getDoctorService(tempPatientDoctor.getDoctor_id(),tempPatientDoctor.getPatient_id());
+        return ResponseEntity.ok(LabMapper.INSTANCE.getPatientDto(output));
+    }
 }

@@ -69,7 +69,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/un-verify-users",
                         "/patients/**",
                         "/verify-user/**",
-                        "/update-vaccine"
+                        "/update-vaccine",
+                        "/update-doctor"
                         ).hasRole("ADMIN")
 //                .antMatchers(HttpMethod.GET,"/organizers").permitAll()
 //                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()

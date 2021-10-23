@@ -1,10 +1,9 @@
-package se331.project.greenlake.entity;
+package se331.project.greenlake.util.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
 import java.util.Date;
 
 @Data

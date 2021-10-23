@@ -35,6 +35,12 @@ public class PatientDaoImpl implements PatientDao {
     }
 
     @Override
+    public Patient getDoctorService(Doctor doctor, Patient patient) {
+        patient.setTake_care_by(doctor);
+        return patientRepository.save(patient);
+    }
+
+    @Override
     public Patient save(Patient patient) {
         return patientRepository.save(patient);
     }
