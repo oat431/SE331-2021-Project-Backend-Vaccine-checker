@@ -4,21 +4,30 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import se331.project.greenlake.entity.*;
+import se331.project.greenlake.entity.dto.AdminAuthDto;
+import se331.project.greenlake.entity.dto.DoctorDto;
+import se331.project.greenlake.entity.dto.PatientDto;
+import se331.project.greenlake.entity.dto.UserDto;
+import se331.project.greenlake.security.entity.User;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Mapper(imports = Collectors.class)
 public interface LabMapper {
-//    LabMapper INSTANCE = Mappers.getMapper(LabMapper.class);
-//    EventDTO getEventDto(Event event);
-//    List<EventDTO> getEventDto(List<Event> events);
-//
-//    OrganizerDTO getOrganizerDTO(Organizer organizer);
-//    List<OrganizerDTO> getOrganizerDTO(List<Organizer> organizers);
-//
-//    @Mapping(target = "authorities", expression = "java(organizer.getUser().getAuthorities().stream().map(auth -> auth.getName().name()).collect(Collectors.toList()))")
-//    OrganizerAuthDTO getOrganizerAuthDTO(Organizer organizer);
+    LabMapper INSTANCE = Mappers.getMapper(LabMapper.class);
+
+    UserDto getUserDto(User user);
+    List<UserDto> getUserDto(List<User> users);
+
+    PatientDto getPatientDto(Patient patient);
+    List<PatientDto> getPatientDto(List<Patient> patients);
+
+    DoctorDto getDoctorDto(Doctor doctor);
+    List<DoctorDto> getDoctorDto(List<Doctor> doctors);
+
+    @Mapping(target = "authorities", expression = "java(admin.getAuthorities().stream().map(auth -> auth.getName().name()).collect(Collectors.toList()))")
+    AdminAuthDto getAdminAuthDTO(User admin);
 
 
 }

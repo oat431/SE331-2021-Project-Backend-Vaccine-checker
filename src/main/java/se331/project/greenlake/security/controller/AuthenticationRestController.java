@@ -66,10 +66,9 @@ public class AuthenticationRestController {
         Map result = new HashMap();
         result.put("token", token);
         User user = userRepository.findById(((JwtUser) userDetails).getId()).orElse(null);
-        // todo edit this
-//                if (user.getOrganizer() != null) {
-//                    result.put("user", LabMapper.INSTANCE.getOrganizerAuthDTO( user.getOrganizer()));
-//                    }
+        if (user != null) {
+            result.put("user", LabMapper.INSTANCE.getAdminAuthDTO(user));
+        }
 
         return ResponseEntity.ok(result);
     }
@@ -100,6 +99,7 @@ public class AuthenticationRestController {
                     .username(authenticationRequest.getUsername())
                     .password(encoder.encode(authenticationRequest.getPassword()))
                     .enabled(true)
+                    .verify(false)
                     .lastPasswordResetDate(new Date(System.currentTimeMillis()))
                     .email(authenticationRequest.getEmail())
                     .build());
