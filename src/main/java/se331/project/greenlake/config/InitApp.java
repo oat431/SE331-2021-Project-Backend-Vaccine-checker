@@ -15,8 +15,6 @@ import se331.project.greenlake.security.repository.AuthorityRepository;
 import se331.project.greenlake.security.repository.UserRepository;
 
 import javax.transaction.Transactional;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -25,8 +23,6 @@ import java.util.GregorianCalendar;
 
 @Component
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
     @Autowired
     UserRepository userRepository;
 

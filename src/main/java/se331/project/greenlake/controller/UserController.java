@@ -9,9 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import se331.project.greenlake.security.entity.Authority;
-import se331.project.greenlake.security.entity.AuthorityName;
+import se331.project.greenlake.entity.Patient;
 import se331.project.greenlake.security.entity.User;
+import se331.project.greenlake.service.PatientService;
 import se331.project.greenlake.service.UserService;
 import se331.project.greenlake.util.LabMapper;
 
@@ -23,6 +23,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    PatientService patientService;
 
     @GetMapping("all-users")
     public ResponseEntity<?> getAllUsers(
@@ -55,5 +58,27 @@ public class UserController {
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         return new ResponseEntity<>(LabMapper.INSTANCE.getUserDto(pageOutput.getContent()), responseHeader, HttpStatus.OK);
+    }
+
+    @GetMapping("patients")
+    public ResponseEntity<?> getPatients(
+            @RequestParam(value = "_limit", required = false) Integer perPage,
+            @RequestParam(value = "_page", required = false) Integer page,
+            @RequestParam(value = "dose", required = false) Integer dose,
+            @RequestParam(value = "title",required = false) String title
+    ){
+        perPage = perPage == null ? 3 : perPage;
+        page = page == null ? 1 : page;
+        Page<Patient> pageOutput;
+        pageOutput = patientService.getPatients(perPage,page);
+//        if(dose != null){
+//            pageOutput = patientService.getPatientVaccineStatus(dose,PageRequest.of(page-1,perPage));
+//        }else{
+//            pageOutput = patientService.getPatients(perPage,page);
+//        }
+
+        HttpHeaders responseHeader = new HttpHeaders();
+        responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
+        return new ResponseEntity<>(LabMapper.INSTANCE.getPatientDto(pageOutput.getContent()), responseHeader, HttpStatus.OK);
     }
 }
