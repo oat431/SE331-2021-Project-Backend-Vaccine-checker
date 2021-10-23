@@ -4,10 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import se331.project.greenlake.entity.*;
-import se331.project.greenlake.entity.dto.AdminAuthDto;
-import se331.project.greenlake.entity.dto.DoctorDto;
-import se331.project.greenlake.entity.dto.PatientDto;
-import se331.project.greenlake.entity.dto.UserDto;
+import se331.project.greenlake.entity.dto.*;
 import se331.project.greenlake.security.entity.User;
 
 import java.util.List;
@@ -25,6 +22,12 @@ public interface LabMapper {
 
     DoctorDto getDoctorDto(Doctor doctor);
     List<DoctorDto> getDoctorDto(List<Doctor> doctors);
+
+    DoctorAuthDto getDoctorAuthDto(Doctor doctor);
+    List<DoctorAuthDto> getDoctorAuthDto(List<Doctor> doctors);
+
+    DoctorAuthPatientInCareDto getPatientInCare(Doctor doctor);
+    List<DoctorAuthPatientInCareDto> getPatientInCare(List<Doctor> doctor);
 
     @Mapping(target = "authorities", expression = "java(admin.getAuthorities().stream().map(auth -> auth.getName().name()).collect(Collectors.toList()))")
     AdminAuthDto getAdminAuthDTO(User admin);

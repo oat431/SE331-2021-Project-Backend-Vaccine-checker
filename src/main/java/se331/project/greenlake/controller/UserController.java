@@ -118,7 +118,7 @@ public class UserController {
     ){
         Doctor output = doctorService.getDoctor(id);
         if(output != null){
-            return ResponseEntity.ok(LabMapper.INSTANCE.getDoctorDto(output));
+            return ResponseEntity.ok(LabMapper.INSTANCE.getDoctorAuthDto(output));
         }else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }

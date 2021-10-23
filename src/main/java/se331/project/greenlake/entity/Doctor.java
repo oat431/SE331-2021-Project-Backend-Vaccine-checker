@@ -14,7 +14,7 @@ public class Doctor extends User {
     String hospital;
 
     // todo mapping patient : one to many
-    @OneToMany(mappedBy = "take_care_by")
+    @OneToMany(mappedBy = "takeCare")
     List<Patient> patients_in_care;
 
     @OneToMany(mappedBy = "comment_by")
