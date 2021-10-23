@@ -11,14 +11,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import se331.project.greenlake.entity.Doctor;
 import se331.project.greenlake.entity.Patient;
+import se331.project.greenlake.entity.TempVaccinatedList;
+import se331.project.greenlake.entity.VaccinatedList;
 import se331.project.greenlake.security.entity.User;
 import se331.project.greenlake.service.PatientService;
 import se331.project.greenlake.service.UserService;
+import se331.project.greenlake.service.VaccineService;
 import se331.project.greenlake.util.LabMapper;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class UserController {
@@ -27,6 +28,9 @@ public class UserController {
 
     @Autowired
     PatientService patientService;
+
+    @Autowired
+    VaccineService vaccineService;
 
     @GetMapping("all-users")
     public ResponseEntity<?> getAllUsers(
@@ -107,4 +111,11 @@ public class UserController {
         Doctor output = userService.getVerifyAsDoctor(user) ;
         return ResponseEntity.ok(LabMapper.INSTANCE.getDoctorDto(output));
     }
+
+    @PostMapping("update-vaccine")
+    public ResponseEntity<?> UpdateVaccine(@RequestBody TempVaccinatedList tempVaccinatedList){
+        Patient output = vaccineService.addUpdateVaccineToPatient(tempVaccinatedList.getVaccinated_when(), tempVaccinatedList.getPatient_id(), tempVaccinatedList.getVaccine_id());
+        return ResponseEntity.ok(LabMapper.INSTANCE.getPatientDto(output));
+    }
+    // todo mapping doctor to user
 }
