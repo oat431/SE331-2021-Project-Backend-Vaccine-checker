@@ -9,7 +9,7 @@ public interface PatientDao {
     Integer getPatientSize();
     Page<Patient> getPatients(Integer pageSize,Integer page);
     Patient getPatient(Long id);
-    Patient getDoctorService(Doctor doctor, Patient patient);
+    Patient getDoctorToTakeCare(Doctor doctor, Patient patient);
     Patient save(Patient patient);
 //    Page<Patient> getPatient(String username, Pageable pageable);
 //    Page<Patient> getDoctorInCare(Doctor doctor, Pageable pageable);

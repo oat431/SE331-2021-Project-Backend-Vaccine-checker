@@ -97,6 +97,33 @@ public class UserController {
         }
     }
 
+    @GetMapping("doctors")
+    public ResponseEntity<?> getDoctors(
+            @RequestParam(value = "_limit", required = false) Integer perPage,
+            @RequestParam(value = "_page", required = false) Integer page
+    ){
+        perPage = perPage == null ? 3 : perPage;
+        page = page == null ? 1 : page;
+        Page<Doctor> pageOutput;
+        pageOutput = doctorService.getDoctors(perPage,page);
+
+        HttpHeaders responseHeader = new HttpHeaders();
+        responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
+        return new ResponseEntity<>(LabMapper.INSTANCE.getDoctorDto(pageOutput.getContent()), responseHeader, HttpStatus.OK);
+    }
+
+    @GetMapping("doctors/{id}")
+    public ResponseEntity<?> getDoctor(
+            @PathVariable("id") Long id
+    ){
+        Doctor output = doctorService.getDoctor(id);
+        if(output != null){
+            return ResponseEntity.ok(LabMapper.INSTANCE.getDoctorDto(output));
+        }else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
+        }
+    }
+
     @PostMapping("verify-user/{id}/patient")
     public ResponseEntity<?> VerifyUserAsPatient(
            @PathVariable("id") Long id
@@ -123,8 +150,7 @@ public class UserController {
 
     @PostMapping("update-doctor")
     public ResponseEntity<?> UpdateDoctor(@RequestBody TempPatientDoctor tempPatientDoctor){
-//        Doctor doctor = doctorService.getDoctor(tempPatientDoctor.getDoctor_id());
-        Patient output = patientService.getDoctorService(tempPatientDoctor.getDoctor_id(),tempPatientDoctor.getPatient_id());
+        Patient output = patientService.getDoctorToTakeCare(tempPatientDoctor.getDoctor_id(), tempPatientDoctor.getPatient_id());
         return ResponseEntity.ok(LabMapper.INSTANCE.getPatientDto(output));
     }
 }

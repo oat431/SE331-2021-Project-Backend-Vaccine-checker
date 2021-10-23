@@ -6,6 +6,7 @@ import se331.project.greenlake.dao.VaccineDao;
 import se331.project.greenlake.entity.Patient;
 import se331.project.greenlake.entity.VaccinatedList;
 import se331.project.greenlake.entity.Vaccine;
+import se331.project.greenlake.repository.PatientRepository;
 import se331.project.greenlake.repository.VaccinatedListRepository;
 import se331.project.greenlake.repository.VaccineRepository;
 
@@ -19,6 +20,9 @@ public class VaccineDaoImpl implements VaccineDao {
     @Autowired
     VaccineRepository vaccineRepository;
 
+    @Autowired
+    PatientRepository patientRepository;
+
     @Override
     public Patient addUpdateVaccineToPatient(Date vaccinatedWhen, Patient patient, Vaccine vaccine) {
         vaccinatedListRepository.save(
@@ -28,7 +32,8 @@ public class VaccineDaoImpl implements VaccineDao {
                         .vaccinated_patient(patient)
                         .build()
         );
-        return patient;
+        patient.setVaccinated_status(patient.getVaccinated_status() == null ? 1 : patient.getVaccinated_status() + 1);
+        return patientRepository.save(patient);
     }
 
     @Override

@@ -39,12 +39,10 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Patient getDoctorService(Long doctor_id, Long patient_id) {
+    public Patient getDoctorToTakeCare(Long doctor_id, Long patient_id) {
         Patient patient = patientDao.getPatient(patient_id);
         Doctor doctor = doctorDao.getDoctor(doctor_id);
-        System.out.println(patient.toString());
-        System.out.println(doctor.toString());
-        return patientDao.getDoctorService(doctor,patient);
+        return patientDao.getDoctorToTakeCare(doctor,patient);
     }
 
 //    @Override

@@ -68,6 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/all-users",
                         "/un-verify-users",
                         "/patients/**",
+                        "/doctors/**",
                         "/verify-user/**",
                         "/update-vaccine",
                         "/update-doctor"

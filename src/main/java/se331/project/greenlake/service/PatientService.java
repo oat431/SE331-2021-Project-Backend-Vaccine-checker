@@ -10,7 +10,7 @@ public interface PatientService {
     Page<Patient> getPatients(Integer pageSize, Integer page);
     Patient getPatient(Long id);
     Patient save(Patient patient);
-    Patient getDoctorService(Long doctor_id, Long patient_id);
+    Patient getDoctorToTakeCare(Long doctor_id, Long patient_id);
 //    Page<Patient> getPatient(String username, Pageable pageable);
 //    Page<Patient> getDoctorInCare(Doctor doctor, Pageable pageable);
 //    Page<Patient> getPatientVaccineStatus(Integer dose,Pageable pageable);
