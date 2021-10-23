@@ -24,12 +24,12 @@ public class DoctorController {
     DoctorService doctorService;
 
     @GetMapping("get-patients/{id}")
-    public ResponseEntity<?> getDoctor(
+    public ResponseEntity<?> getPatientInCare(
             @PathVariable("id") Long id
     ){
         Doctor output = doctorService.getDoctor(id);
         if(output != null){
-            return ResponseEntity.ok(LabMapper.INSTANCE.getDoctorAuthDto(output));
+            return ResponseEntity.ok(LabMapper.INSTANCE.getPatientInCare(output));
         }else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }

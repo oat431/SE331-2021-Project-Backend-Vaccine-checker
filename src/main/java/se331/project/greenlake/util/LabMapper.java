@@ -26,6 +26,9 @@ public interface LabMapper {
     DoctorAuthDto getDoctorAuthDto(Doctor doctor);
     List<DoctorAuthDto> getDoctorAuthDto(List<Doctor> doctors);
 
+    DoctorAuthPatientInCareDto getPatientInCare(Doctor doctor);
+    List<DoctorAuthPatientInCareDto> getPatientInCare(List<Doctor> doctor);
+
     @Mapping(target = "authorities", expression = "java(admin.getAuthorities().stream().map(auth -> auth.getName().name()).collect(Collectors.toList()))")
     AdminAuthDto getAdminAuthDTO(User admin);
 

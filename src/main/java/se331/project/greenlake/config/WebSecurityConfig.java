@@ -65,10 +65,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/**", "/refresh", "/registers/**").permitAll()
                 .antMatchers(
                         HttpMethod.GET,
+                        "/doctors/**"
+                ).hasAnyRole("ADMIN","DOCTOR")
+                .antMatchers(
+                        HttpMethod.GET,
                         "/all-users",
                         "/un-verify-users",
-                        "/patients/**",
-                        "/doctors/**"
+                        "/patients/**"
                         ).hasRole("ADMIN")
                 .antMatchers(
                         HttpMethod.POST,
