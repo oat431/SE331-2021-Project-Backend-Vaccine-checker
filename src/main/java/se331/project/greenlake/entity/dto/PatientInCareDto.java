@@ -21,4 +21,5 @@ public class PatientInCareDto {
     String hometown;
     Integer vaccinated_status;
     List<VaccinatedListDto> vaccinated_list;
+    List<String> imageUrls;
 }

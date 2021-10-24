@@ -77,4 +77,7 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     protected List<Authority> authorities = new ArrayList<>();
 
+    @ElementCollection
+    List<String> imageUrls = new ArrayList<>();
+
 }

@@ -56,13 +56,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf().disable()
-                // Enable cors
                 .cors().and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                // don't create session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/auth/**", "/refresh", "/registers/**").permitAll()
+                .antMatchers(HttpMethod.POST,"/uploadFile").permitAll()
                 .antMatchers(
                         HttpMethod.GET,
                         "/doctors/**"

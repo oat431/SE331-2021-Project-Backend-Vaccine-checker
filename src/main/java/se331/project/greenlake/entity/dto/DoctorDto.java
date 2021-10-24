@@ -16,4 +16,5 @@ public class DoctorDto {
     String firstname;
     String lastname;
     String hospital;
+    List<String> imageUrls;
 }

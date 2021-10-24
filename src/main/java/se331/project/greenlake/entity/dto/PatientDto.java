@@ -26,4 +26,5 @@ public class PatientDto {
     DoctorDto takeCare;
     List<CommentDto> doctor_suggestion;
     List<VaccinatedListDto> vaccinated_list;
+    List<String> imageUrls;
 }

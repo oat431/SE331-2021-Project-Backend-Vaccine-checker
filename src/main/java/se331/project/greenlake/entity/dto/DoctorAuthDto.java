@@ -18,5 +18,5 @@ public class DoctorAuthDto {
     String lastname;
     Date date_of_birth;
     String hometown;
-
+    List<String> imageUrls;
 }

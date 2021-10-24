@@ -217,7 +217,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     }
 
     User mockNormalUser, mockNormalUser2,theAdmin;
-    Patient[] mockPatient = new Patient[10];
+    Patient[] mockPatient = new Patient[5];
     Doctor[] mockDoctor = new Doctor[3];
     PasswordEncoder encoder = new BCryptPasswordEncoder();
     private void addUser() {
@@ -281,14 +281,14 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userRepository.save(mockNormalUser2);
         userRepository.save(theAdmin);
 
-        for(int i=0;i<mockPatient.length;i++){
-            mockPatient[i].getAuthorities().add(patient);
-            patientRepository.save(mockPatient[i]);
+        for (Patient value : mockPatient) {
+            value.getAuthorities().add(patient);
+            patientRepository.save(value);
         }
 
-        for(int i=0;i<mockDoctor.length;i++){
-            mockDoctor[i].getAuthorities().add(doctor);
-            doctorRepository.save(mockDoctor[i]);
+        for (Doctor value : mockDoctor) {
+            value.getAuthorities().add(doctor);
+            doctorRepository.save(value);
         }
 
     }
@@ -303,6 +303,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[0].setSex("male");
         mockPatient[0].setFirstname("Sahachan");
         mockPatient[0].setLastname("Tippimwong");
+        mockPatient[0].getImageUrls().add("https://i.imgur.com/cpgnTGg.jpg");
         mockPatient[0].setEnabled(true);
         mockPatient[0].setVerify(true);
         mockPatient[0].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
@@ -317,10 +318,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[1].setSex("male");
         mockPatient[1].setFirstname("Essie");
         mockPatient[1].setLastname("Oneal");
+        mockPatient[1].getImageUrls().add("https://image.freepik.com/free-photo/shocked-bearded-man-recieves-unexpected-news-from-friend-clasps-hands-near-face-opens-mouth-widely-expresses-surprisement-isolated-white-wall_273609-16646.jpg");
         mockPatient[1].setEnabled(true);
         mockPatient[1].setVerify(true);
         mockPatient[1].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        mockPatient[1].setDate_of_birth(new GregorianCalendar(1998, 12, 1).getTime());
+        mockPatient[1].setDate_of_birth(new GregorianCalendar(1998, 11, 6).getTime());
         mockPatient[1].setHometown("Earth, Solar System");
         mockPatient[1].setVaccinated_status(2);
         mockPatient[1].setTakeCare(mockDoctor[1]);
@@ -333,6 +335,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[2].setLastname("Sexton");
         mockPatient[2].setEnabled(true);
         mockPatient[2].setVerify(true);
+        mockPatient[2].getImageUrls().add("https://image.freepik.com/free-photo/happy-arab-woman-hijab-portrait-smiling-girl-pointing-camera-red-studio-background-young-emotional-woman-human-emotions-facial-expression-concept_155003-21757.jpg");
         mockPatient[2].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
         mockPatient[2].setDate_of_birth(new GregorianCalendar(2004, 12, 25).getTime());
         mockPatient[2].setHometown("Modesto, US");
@@ -345,6 +348,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[3].setSex("female");
         mockPatient[3].setFirstname("Josephine");
         mockPatient[3].setLastname("Charles");
+        mockPatient[3].getImageUrls().add("https://image.freepik.com/free-photo/korean-young-woman-s-half-length-portrait-female-model-white-shirt-showing-pointing-something-concept-human-emotions-facial-expression-front-view_155003-18248.jpg");
         mockPatient[3].setEnabled(true);
         mockPatient[3].setVerify(true);
         mockPatient[3].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
@@ -356,8 +360,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockPatient[4].setUsername("clay903");
         mockPatient[4].setPassword(encoder.encode("itmeclay333"));
         mockPatient[4].setEmail("clay@clay.com");
+        mockPatient[4].setSex("male");
         mockPatient[4].setFirstname("Clay");
         mockPatient[4].setLastname("Leon");
+        mockPatient[4].getImageUrls().add("https://image.freepik.com/free-photo/shocked-bearded-man-recieves-unexpected-news-from-friend-clasps-hands-near-face-opens-mouth-widely-expresses-surprisement-isolated-white-wall_273609-16646.jpg");
         mockPatient[4].setEnabled(true);
         mockPatient[4].setVerify(true);
         mockPatient[4].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
