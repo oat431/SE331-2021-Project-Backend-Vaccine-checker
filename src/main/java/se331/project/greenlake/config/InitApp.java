@@ -20,6 +20,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 @Component
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
@@ -60,13 +61,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     private void addVaccine(){
         az = vaccineRepository.save(
                 Vaccine.builder()
-                        .title("Aztrazeneca")
+                        .title("AstraZeneca")
                         .short_title("AZ")
                         .build()
         );
         jj = vaccineRepository.save(
                 Vaccine.builder()
-                        .title("Johnson and Johnson")
+                        .title("Johnson & Johnson's Janssen")
                         .short_title("JJ")
                         .build()
         );
@@ -84,7 +85,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         );
         sv = vaccineRepository.save(
                 Vaccine.builder()
-                        .title("Sinovax")
+                        .title("Sinovac")
                         .short_title("SV")
                         .build()
         );
@@ -225,6 +226,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         Authority patient = Authority.builder().name(AuthorityName.ROLE_PATIENT).build();
         Authority doctor = Authority.builder().name(AuthorityName.ROLE_DOCTOR).build();
         Authority admin = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
+        List<String> tempUrl1 = new ArrayList<>();
+        List<String> tempUrl2 = new ArrayList<>();
+        tempUrl1.add("https://image.freepik.com/free-photo/korean-young-woman-s-half-length-portrait-female-model-white-shirt-showing-pointing-something-concept-human-emotions-facial-expression-front-view_155003-18248.jpg");
+        tempUrl2.add("https://image.freepik.com/free-photo/shocked-bearded-man-recieves-unexpected-news-from-friend-clasps-hands-near-face-opens-mouth-widely-expresses-surprisement-isolated-white-wall_273609-16646.jpg");
         mockNormalUser = User.builder()
                 .username("normalUser")
                 .password(encoder.encode("normalUser"))
@@ -232,6 +237,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .sex("male")
                 .firstname("Something")
                 .lastname("ThingSome")
+                .imageUrls(tempUrl1)
                 .enabled(false)
                 .verify(false)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
@@ -243,8 +249,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .password(encoder.encode("normalUser2"))
                 .email("normalUser2@normalUser2.com")
                 .sex("female")
-                .firstname("Something")
-                .lastname("ThingSome")
+                .firstname("Female")
+                .lastname("NormalUser")
+                .imageUrls(tempUrl2)
                 .enabled(true)
                 .verify(false)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
@@ -383,6 +390,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockDoctor[0].setSex("male");
         mockDoctor[0].setFirstname("Doctor");
         mockDoctor[0].setLastname("Rotcod");
+        mockDoctor[0].getImageUrls().add("https://images.unsplash.com/photo-1586770802838-e524ec9018a8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80");
         mockDoctor[0].setEnabled(true);
         mockDoctor[0].setVerify(true);
         mockDoctor[0].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
@@ -396,6 +404,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockDoctor[1].setSex("female");
         mockDoctor[1].setFirstname("Kim");
         mockDoctor[1].setLastname("Rotcod");
+        mockDoctor[1].getImageUrls().add("https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80");
         mockDoctor[1].setEnabled(true);
         mockDoctor[1].setVerify(true);
         mockDoctor[1].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
@@ -409,6 +418,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         mockDoctor[2].setSex("female");
         mockDoctor[2].setFirstname("Su Chan");
         mockDoctor[2].setLastname("Rotcod");
+        mockDoctor[2].getImageUrls().add("https://images.unsplash.com/photo-1601583789200-96cd7f385315?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=334&q=80");
         mockDoctor[2].setEnabled(true);
         mockDoctor[2].setVerify(true);
         mockDoctor[2].setLastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()));
