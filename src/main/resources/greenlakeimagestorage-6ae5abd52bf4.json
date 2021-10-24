@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "greenlakeimagestorage",
+  "private_key_id": "6ae5abd52bf4baaf709a61624d1f139cb74d007c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDK7fiB7EziVffB\nP+KNCf+FnhRWdNxQJz/JnXa5PsR54l5NhYQp7dXsqSKowBr0gKZS7bJXUbU8DGIg\nwLxGYCENJaCXygsu8c+ac1wyyD3NR8WLR+MEbx6DMKniOdprbpso2xl5+hpDssZ/\nTp9jF+JFo87lQocB4wQllfuY90mS6hQDzYHwixf3pbnBbfh9VU7JINlS89bWFnuc\ncrifHy5qhkQB7zG2co6m7S243Nv1ZZK90KW6rxF6/BcgOan/oE1qlVDAngEtrrz5\neKv1hKQ7FonjaSij/vttIclOasy+SQkCeHB8dRpUx7tkSo1bmKvuyuOnVlXXGzYy\nHaEi++uTAgMBAAECggEAQ2JV/L58oUOuq2sNTYweXz4ovrS7W5pM4iP5gnXHRDnY\n2qEVS98ABD/9lE+GI958XFk1uS0Wo0PxabLWUgAluXnfI8ghgoslRsI7wVkgvIOy\noxdR2O0VErccElTnpHjr6NsoUIquIgDBTRDMeFk796f3UcWPkx7RB7IQA7FJqxCb\nWKwGYAGsNIE9RrMNl0C6dMHbZnAxw1Sky65T8hobk/ymeiHZK1Fmeb42qU4w4Fep\n8f4mFhhdgvviAaMQeHFIzfTJhqLiFVkWHo+TEhSu9Z5YxOfmyefHpDooQUvgyPS+\nulejpYw72cpRJ4oBvk1pi18WVRCW+CBlNIOPk7RzYQKBgQD6y08M3CkxQBZEZ10V\n4wkMjC8I/jgzLmCtpEAwIC7j1t+P3DW+fJNRMwKGHgvcx3QjQ1NXYsouIyCE+Vop\n0jF/4aOoCSS98OatCVV6A/glsg6PbMyVuc8xmeRGAymxloNeV8jr8avYJmRYbQ31\nl9/NlFad2+yyvC5ZNlWYU/q9awKBgQDPJFCjMVIEki6fcVqjwgIUq/1RF5cladot\nHCJBuIhgDlfVvC1mjf+vwhzzgmKUznaSodl2Gf0UJXguHqA8EmckT/c9uLc/nIwS\n9CQF24e6wvCcexLrZy4llNMp/a70LzZXplovPeyOdM2l5wlJ0KwMSvdAl+CLH1sY\no09Wqz4seQKBgEtt4I2undkJPGlAaVfO3AbhFrhutXp3RW6USxXuaAvwsXa0NZng\nH/K5E9ZArTKu7ng4pJVQyhxMRliYIo0XgfnDZJSCg4F5NffvKb0z+mtj/UsX3wRd\nSTrS3TxNcTnPWh2C65RDMHsnOOD7k8o87nwHVHHQFoW/YXVFiULyZySXAoGBAIja\nwlf/huO0PQ9kkfDthfhoZVXFUzwJwnbZRpzLMXbdIxT4XbqLCKnzgrMzqrQL8HUS\nb51CsF02ID/ARjdKJVDtcDkcKB3j7Pu8x2wDTZqLnvKTsb1Lj0aPHDB7BbMY2jtw\nkdbyf67i5te8W/uj3XfFs7O+ZEEmd0ZA53MockxpAoGABLUQnpIvSj15U3YbfBOw\nZQCBWXGxY2kCXNUr51fDZ1MPmVxdPFl4pnvkw9kjMF7WboFSIPv+WWzJJLLWUqT/\nDVl9Ep7SfieC5p7+7fK4GGqNRaLO3xcEnRJGl7fYxQH5FYatW6cLsQkNQnb1VZIX\nXwpi63zrJAKqN7ZS00Ck6aU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "greenlakeimagestorage@appspot.gserviceaccount.com",
+  "client_id": "116474941452404091534",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/greenlakeimagestorage%40appspot.gserviceaccount.com"
+}

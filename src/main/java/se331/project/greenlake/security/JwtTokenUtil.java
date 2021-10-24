@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mobile.device.Device;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import se331.lab.rest.security.entity.JwtUser;
+import se331.project.greenlake.security.entity.JwtUser;
 
 import java.io.Serializable;
 import java.util.Date;

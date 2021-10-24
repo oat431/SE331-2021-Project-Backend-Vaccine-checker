@@ -56,17 +56,40 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf().disable()
-                // Enable cors
                 .cors().and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                // don't create session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/auth/**", "/refresh", "/registers/**").permitAll()
-                .antMatchers(HttpMethod.GET,"/events").permitAll()
-                .antMatchers(HttpMethod.GET,"/organizers").permitAll()
-                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers(HttpMethod.POST,"/events").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/uploadFile").permitAll()
+                .antMatchers(
+                        HttpMethod.GET,
+                        "/doctors/**"
+                ).hasAnyRole("ADMIN","DOCTOR")
+                .antMatchers(
+                        HttpMethod.GET,
+                        "/all-users",
+                        "/un-verify-users",
+                        "/patients/**"
+                        ).hasRole("ADMIN")
+                .antMatchers(
+                        HttpMethod.POST,
+                        "/verify-user/**",
+                        "/update-vaccine",
+                        "/update-doctor"
+                ).hasRole("ADMIN")
+                .antMatchers(
+                        HttpMethod.GET,
+                        "/get-patients/{id}"
+                ).hasRole("DOCTOR")
+                .antMatchers(
+                        HttpMethod.POST,
+                        "/comment"
+                ).hasRole("DOCTOR")
+                .antMatchers(
+                        HttpMethod.GET,
+                        "patient/{id}"
+                ).hasRole("PATIENT")
                 .anyRequest().authenticated();
 
         // Custom JWT based security filter
