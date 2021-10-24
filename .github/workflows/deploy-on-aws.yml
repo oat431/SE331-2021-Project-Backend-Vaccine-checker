@@ -50,4 +50,4 @@ jobs:
           docker-compose -H ${{ secrets.DOCKER_HOST }} down
           docker-compose -H ${{ secrets.DOCKER_HOST }} pull
           docker-compose -H ${{ secrets.DOCKER_HOST }} up -d
-          docker run -p 8999:8080 -d oat431/se331-greenlake-backend
+          docker start project-backend_backend_1
