@@ -14,4 +14,5 @@ public class VaccineDto {
     Long vaccine_id;
     String title;
     String short_title;
+    List<String> imageUrls;
 }
