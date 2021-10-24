@@ -14,7 +14,7 @@ public class Patient extends User {
     Integer vaccinated_status;
     // todo doctor mapping : many to one
     @ManyToOne
-    Doctor take_care_by;
+    Doctor takeCare;
 
     // todo vaccine mapping : many to many
     @OneToMany(mappedBy = "vaccinated_patient")

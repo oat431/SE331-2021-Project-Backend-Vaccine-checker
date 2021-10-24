@@ -66,10 +66,9 @@ public class AuthenticationRestController {
         Map result = new HashMap();
         result.put("token", token);
         User user = userRepository.findById(((JwtUser) userDetails).getId()).orElse(null);
-        // todo edit this
-//                if (user.getOrganizer() != null) {
-//                    result.put("user", LabMapper.INSTANCE.getOrganizerAuthDTO( user.getOrganizer()));
-//                    }
+        if (user != null) {
+            result.put("user", LabMapper.INSTANCE.getAdminAuthDTO(user));
+        }
 
         return ResponseEntity.ok(result);
     }
@@ -83,7 +82,7 @@ public class AuthenticationRestController {
 
         if (jwtTokenUtil.canTokenBeRefreshed(token, user.getLastPasswordResetDate())) {
             String refreshedToken = jwtTokenUtil.refreshToken(token);
-            return ResponseEntity.ok(new JwtAuthenticationResponse(refreshedToken));
+            return ResponseEntity.ok(new JwtAuthenticationResponse(refreshedToken) + "You are now currently logout");
         } else {
             return ResponseEntity.badRequest().body(null);
         }
@@ -94,11 +93,13 @@ public class AuthenticationRestController {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         if (userRepository.findByUsername(authenticationRequest.getUsername()) == null ){
             userRepository.save(User.builder()
-                    .firstname(authenticationRequest.getUsername())
-                    .lastname(authenticationRequest.getUsername())
+                    .firstname(authenticationRequest.getFirstname())
+                    .lastname(authenticationRequest.getLastname())
+                    .hometown(authenticationRequest.getHometown())
                     .username(authenticationRequest.getUsername())
                     .password(encoder.encode(authenticationRequest.getPassword()))
                     .enabled(true)
+                    .verify(false)
                     .lastPasswordResetDate(new Date(System.currentTimeMillis()))
                     .email(authenticationRequest.getEmail())
                     .build());
