@@ -16,5 +16,4 @@ public class DoctorDto {
     String firstname;
     String lastname;
     String hospital;
-    List<PatientInCareDto> patients_in_care;
 }
