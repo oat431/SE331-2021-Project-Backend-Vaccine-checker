@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(maxAge = 3600)
 public class AuthenticationRestController {
 
     @Value("${jwt.header}")
@@ -93,6 +93,8 @@ public class AuthenticationRestController {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         if (userRepository.findByUsername(authenticationRequest.getUsername()) == null ){
             userRepository.save(User.builder()
+                    .sex(authenticationRequest.getSex())
+                    .date_of_birth(authenticationRequest.getDateOfBirth())
                     .firstname(authenticationRequest.getFirstname())
                     .lastname(authenticationRequest.getLastname())
                     .hometown(authenticationRequest.getHometown())

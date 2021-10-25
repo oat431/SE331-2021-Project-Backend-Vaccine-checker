@@ -1,6 +1,7 @@
 package se331.project.greenlake.security.controller;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by stephan on 20.03.16.
@@ -12,23 +13,43 @@ public class JwtAuthenticationRequest implements Serializable {
     private String username;
     private String password;
     private String email;
+    private String sex;
     private String firstname;
     private String lastname;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
     private String hometown;
+    private Date dateOfBirth;
 
     public JwtAuthenticationRequest() {
         super();
     }
 
-    public JwtAuthenticationRequest(String username, String password, String email,String firstName,String lastname,String hometown) {
-        this.setUsername(username);
-        this.setPassword(password);
-        this.setEmail(email);
-        this.setFirstname(firstName);
-        this.setLastname(lastname);
-        this.setHometown(hometown);
+    public JwtAuthenticationRequest(String username, String password, String email, String sex, String firstname, String lastname, String hometown, Date dateOfBirth) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.sex = sex;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.hometown = hometown;
+        this.dateOfBirth = dateOfBirth;
     }
-
     public String getUsername() {
         return this.username;
     }
