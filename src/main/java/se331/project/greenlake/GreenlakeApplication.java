@@ -19,7 +19,6 @@ public class GreenlakeApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry){
                 registry.addMapping("/**")
-                        .allowedMethods("*")
                         .allowedOrigins("http://localhost:3000")
                         .allowedOrigins("http://54.146.210.137")
                         .exposedHeaders("x-total-count");

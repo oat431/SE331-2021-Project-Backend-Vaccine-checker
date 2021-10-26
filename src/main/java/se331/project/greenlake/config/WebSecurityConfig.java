@@ -15,8 +15,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import se331.project.greenlake.security.controller.JwtAuthenticationEntryPoint;
 import se331.project.greenlake.security.controller.JwtAuthenticationTokenFilter;
+
+import java.util.Arrays;
 
 
 @Configuration
@@ -60,6 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/auth/**", "/refresh", "/registers/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/uploadFile").permitAll()
                 .antMatchers(
