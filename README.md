@@ -1,6 +1,6 @@
 # SE331 Term Project 🛠
 
-Backend part use this end point : http://54.146.210.137:8999
+Backend part
 
 ## team memebers 🌿
 | No. | Name | Student ID | Github Account |
