@@ -7,3 +7,5 @@ Backend part use this end point : http://54.146.210.137:8999
 | --------------- | ------------------- | --------- | --------- |
 | **1st member:** | Sahachan Tippimwong | 622115039 | [Oralita](https://github.com/oat431) |
 | **3rd member:** | Dian Jin | 622115503 | [MichaelJin3](https://github.com/MichaelJin3) |
+
+## status : finish : Abandon
